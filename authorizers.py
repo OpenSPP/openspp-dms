@@ -6,25 +6,32 @@ class OpenSPPAuthorizer(DummyAuthorizer):
         # TODO: Call OpenSPP auth here
         return True
 
+    def validate_authentication(self, username, password, handler):
+        """Authenticate using OpenSPP auth
+        AuthenticationFailed in case of failed authentication.
+        """
+        self.authorize_from_openspp(username, password)
+
+    def get_home_dir(self, username):
+        """Return the user's in-memory directory.
+        Since this is called during authentication (PASS),
+        AuthenticationFailed can be freely raised by subclasses in case
+        the provided username no longer exists.
+        """
+        return ""
+
+    def has_perm(self, username, perm, path=None):
+        return True
+
+    def get_msg_login(self, username):
+        """Return the user's login message."""
+        return "Welcome"
+
     def add_user(
         self,
-        username,
-        password,
-        homedir,
-        perm="elr",
-        msg_login="Login successful.",
-        msg_quit="Goodbye.",
         **kwargs,
     ):
-        self.authorize_from_openspp(username, password)
-        super().add_user(
-            username=username,
-            password=password,
-            homedir=homedir,
-            perm=perm,
-            msg_login=msg_login,
-            msg_quit=msg_quit,
-        )
+        raise Exception("Action not allowed.")
 
     def add_anonymous(self, homedir, **kwargs):
         raise Exception("Action not allowed.")

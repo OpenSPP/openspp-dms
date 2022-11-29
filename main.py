@@ -2,18 +2,12 @@ from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 
 from authorizers import OpenSPPAuthorizer
-from config import FTP_SERVER_HOSTNAME, OPENSPP_TOKEN, OPENSPP_USERNAME
+from config import FTP_SERVER_HOSTNAME
 from filesystems import OpenSPPFS
 
 
 def main():
     authorizer = OpenSPPAuthorizer()
-    authorizer.add_user(
-        username=OPENSPP_USERNAME,
-        password=OPENSPP_TOKEN,
-        homedir=".",
-        perm="elradfmwMT",
-    )
 
     handler = FTPHandler
     handler.abstracted_fs = OpenSPPFS
