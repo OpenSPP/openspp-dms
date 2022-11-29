@@ -1,46 +1,37 @@
-import tempfile
-
 from pyftpdlib.authorizers import DummyAuthorizer
-
-from client import OpenSPPClient
-from config import OPENSPP_DB_NAME, OPENSPP_URL
 
 
 class OpenSPPAuthorizer(DummyAuthorizer):
-    def openspp_login(self, username, password):
-        client = OpenSPPClient(
-            db_name=OPENSPP_DB_NAME,
-            username=username,
-            password=password,
-            server_root=OPENSPP_URL,
-        )
-        uid = client.login()
-        if not uid:
-            raise Exception("No user")
-        return uid
+    def authorize_from_openspp(self, username, password):
+        # TODO: Call OpenSPP auth here
+        return True
+
+    def validate_authentication(self, username, password, handler):
+        """Authenticate using OpenSPP auth
+        AuthenticationFailed in case of failed authentication.
+        """
+        self.authorize_from_openspp(username, password)
+
+    def get_home_dir(self, username):
+        """Return the user's in-memory directory.
+        Since this is called during authentication (PASS),
+        AuthenticationFailed can be freely raised by subclasses in case
+        the provided username no longer exists.
+        """
+        return ""
+
+    def has_perm(self, username, perm, path=None):
+        return True
+
+    def get_msg_login(self, username):
+        """Return the user's login message."""
+        return "Welcome"
 
     def add_user(
         self,
-        username,
-        password,
-        perm="elr",
-        msg_login="Login successful.",
-        msg_quit="Goodbye.",
         **kwargs,
     ):
-        uid = self.openspp_login(username, password)
-
-        # TODO: Change this to in-memory filehandler. We don't want to save the files in the FS
-        dir_name = f"{uid}-{username}"
-        temp_dir = tempfile.TemporaryDirectory(prefix=dir_name)
-        super().add_user(
-            username=username,
-            password=password,
-            homedir=temp_dir.name,
-            perm=perm,
-            msg_login=msg_login,
-            msg_quit=msg_quit,
-        )
+        raise Exception("Action not allowed.")
 
     def add_anonymous(self, homedir, **kwargs):
         raise Exception("Action not allowed.")
