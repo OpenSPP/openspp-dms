@@ -10,9 +10,10 @@
     "maintainers": ["jeremi", "gonzalesedwin1123", "emjay0921"],
     "depends": [
         "base",
+        "spp_change_request",
         "dms",
     ],
-    "data": ["views/user_custom_view.xml"],
+    "data": ["security/scanner_security.xml", "views/user_custom_view.xml"],
     "assets": {},
     "demo": [],
     "images": [],

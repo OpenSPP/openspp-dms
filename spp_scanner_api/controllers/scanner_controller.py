@@ -7,10 +7,14 @@ _logger = logging.getLogger(__name__)
 
 
 class SPPScannerController(http.Controller):
-    @http.route("/auth", type="json", auth="public", methods=["POST"], website=False)
+    @http.route(
+        "/dms/auth", type="json", auth="public", methods=["POST"], website=False
+    )
     def login(self, **post):
         username = post.get("username", False)
         password = post.get("password", False)
+        if not username or not password:
+            return Response("Succeed", 400)  # Bad Request
         user, code = self._authenticate_user(username, password)
         if user:
             return Response("Succeed", code)
@@ -25,7 +29,7 @@ class SPPScannerController(http.Controller):
         )
         if user:
             if (
-                request.env.ref("spp_change_request.group_spp_change_request_agent").id
+                request.env.ref("spp_scanner_api.group_spp_scanner").id
                 in user[0].groups_id.ids
             ):
                 return user, 200  # OK
@@ -34,10 +38,14 @@ class SPPScannerController(http.Controller):
         else:
             return None, 401  # Unauthorized
 
-    @http.route("/upload", type="json", auth="public", methods=["POST"], website=False)
+    @http.route(
+        "/dms/upload", type="json", auth="public", methods=["POST"], website=False
+    )
     def upload(self, **post):
         username = post.get("username", False)
         password = post.get("password", False)
+        if not username or not password:
+            return Response("Error", 400)  # Bad Request
         file = post.get("file", False)
         filename = post.get("filename", False)
         if not file or not filename:
@@ -54,7 +62,9 @@ class SPPScannerController(http.Controller):
                     "name": filename,
                 }
                 request.env["dms.file"].sudo(user.id).create(vals)
-                code = 200
+                code = 200  # OK
                 return Response("Succeed", code)
+            else:
+                return Response("Error", 400)  # Bad Request
         else:
             return Response("Error", code)
