@@ -41,6 +41,7 @@ class OpenSPPAuthorizer(DummyAuthorizer):
             msg_login=msg_login,
             msg_quit=msg_quit,
         )
+        return
 
     def add_anonymous(self, homedir, **kwargs):
         raise Exception("Action not allowed.")

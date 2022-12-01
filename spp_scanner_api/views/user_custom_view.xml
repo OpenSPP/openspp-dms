@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_user_scanner_view" model="ir.ui.view">
+        <field name="name">view_user_scanner_view</field>
+        <field name="model">res.users</field>
+        <field name="priority">1000</field>
+        <field name="inherit_id" ref="base.view_users_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[3]/group[1]" position="inside">
+                <field name="scanner_password" />
+                <field name="current_dms_directory_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
