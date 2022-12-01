@@ -1,0 +1,13 @@
+<odoo noupdate="0">
+    <record model="ir.module.category" id="spp_scan_api">
+        <field name="name">Scan API</field>
+        <field name="description">User access level for the OpenSPP Scanner module</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="group_spp_scanner" model="res.groups">
+        <field name="name">Scanner</field>
+        <field name="category_id" ref="spp_scanner_api.spp_scan_api" />
+    </record>
+
+</odoo>
