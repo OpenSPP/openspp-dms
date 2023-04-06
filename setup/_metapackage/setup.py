@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for openspp-openspp-dms Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-spp_dms_security>=15.0dev,<15.1dev',
         'odoo-addon-spp_scanner_api>=15.0dev,<15.1dev',
     ],
     classifiers=[
