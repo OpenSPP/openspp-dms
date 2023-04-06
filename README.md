@@ -22,8 +22,8 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[spp_dms_security](spp_dms_security/) | 15.0.0.0.0 | [![jeremi](https://github.com/jeremi.png?size=30px)](https://github.com/jeremi) [![gonzalesedwin1123](https://github.com/gonzalesedwin1123.png?size=30px)](https://github.com/gonzalesedwin1123) [![nhatnm0612](https://github.com/nhatnm0612.png?size=30px)](https://github.com/nhatnm0612) | SPP DMS Security
-[spp_scanner_api](spp_scanner_api/) | 15.0.0.0.0 | [![jeremi](https://github.com/jeremi.png?size=30px)](https://github.com/jeremi) [![gonzalesedwin1123](https://github.com/gonzalesedwin1123.png?size=30px)](https://github.com/gonzalesedwin1123) [![emjay0921](https://github.com/emjay0921.png?size=30px)](https://github.com/emjay0921) | SPP Registry: Scanner API
+[spp_dms_security](spp_dms_security/) | 15.0.1.0.15 | [![jeremi](https://github.com/jeremi.png?size=30px)](https://github.com/jeremi) [![gonzalesedwin1123](https://github.com/gonzalesedwin1123.png?size=30px)](https://github.com/gonzalesedwin1123) [![nhatnm0612](https://github.com/nhatnm0612.png?size=30px)](https://github.com/nhatnm0612) | SPP DMS Security
+[spp_scanner_api](spp_scanner_api/) | 15.0.1.0.15 | [![jeremi](https://github.com/jeremi.png?size=30px)](https://github.com/jeremi) [![gonzalesedwin1123](https://github.com/gonzalesedwin1123.png?size=30px)](https://github.com/gonzalesedwin1123) [![emjay0921](https://github.com/emjay0921.png?size=30px)](https://github.com/emjay0921) | SPP Registry: Scanner API
 
 [//]: # (end addons)
 
