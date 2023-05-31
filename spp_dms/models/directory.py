@@ -3,7 +3,8 @@ import logging
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
 
-from ..tools.file import check_name
+# from ..tools.file import check_name
+from odoo.addons.dms.tools.file import check_name
 
 _logger = logging.getLogger(__name__)
 
