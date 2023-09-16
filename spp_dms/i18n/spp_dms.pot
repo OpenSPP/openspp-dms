@@ -21,12 +21,18 @@ msgstr ""
 
 #. module: spp_dms
 #: model:ir.model.fields,field_description:spp_dms.field_dms_directory__dms_directory_ids
+#: model:ir.model.fields,field_description:spp_dms.field_ir_http__dms_directory_ids
 msgid "DMS Directories"
 msgstr ""
 
 #. module: spp_dms
 #: model:ir.model,name:spp_dms.model_dms_directory
 msgid "Directory"
+msgstr ""
+
+#. module: spp_dms
+#: model:ir.model,name:spp_dms.model_ir_http
+msgid "HTTP Routing"
 msgstr ""
 
 #. module: spp_dms
